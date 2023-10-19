@@ -1,20 +1,13 @@
-SRC = main.cc
-
-OBJ = $(SRC:.cc=.o)
-
-NAME = Antman
-
-CFLAGS = -W -Wall -Wextra -Werror -I./include -Wpedantic -std=c++17
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CXX) $(OBJ) -o $(NAME) $(CFLAGS)
+all:
+	make -C ./antman
+	make -C ./giantman
 
 clean:
-	rm -f $(OBJ)
+	make -C ./antman clean
+	make -C ./giantman clean
 
-fclean: clean
-	rm -f $(NAME)
+fclean:
+	make -C ./antman fclean
+	make -C ./giantantman fclean
 
-re: fclean all
+re: clean all
